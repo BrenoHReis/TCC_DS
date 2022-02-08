@@ -1,6 +1,8 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:projeto/input_field.dart';
+import 'package:projeto/usuario_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -18,54 +20,48 @@ class _LoginPageState extends State<LoginPage> {
           child: Container(
             width: 300,
             padding: const EdgeInsets.all(30.0),
-            child:
-          Column(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                 Text("Bem-Vindo", 
-
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(fontSize: 90, color: Colors.green),
-                    ),
                 _inputField("Email", Icons.email, false),
                 _inputField("Senha", Icons.password, true),
                 SizedBox(
                   height: 20,
                 ),
-                  ElevatedButton(onPressed: () {}, child: Text("Entrar")),
-                  Column(
-                    children: [
-                      SizedBox(height:10),
-                      ElevatedButton(onPressed: () {}, child: Text("Cadastrar")),
+                botaoEntrar(),
+                botaoCadastrar(),
                     ],
                   ),
-              ],
+              
             ),
           ),
-
-    )
-    );
+        );
   }
 
   _inputField(String rotulo, IconData icone, bool senha){
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10.0),
-      child: TextFormField(
-        obscureText: senha && !ver,
-                  decoration: InputDecoration(labelText: rotulo,
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(icone),
-                  suffixIcon: senha
-                   ? IconButton(onPressed: () {
-                     setState(() {
-                       ver = !ver;
-                     });
-                   }, 
+    return InputField(rotulo, icone, senha);
+  }
 
-                   icon: Icon(ver?Icons.visibility_off: Icons.visibility))
-                   : null),
-                ),
+  botaoEntrar() {
+   return Row(
+                  children: [
+                    Expanded(child: ElevatedButton(onPressed: () {}, child: Text("Entrar"))),
+                  ],
+                );
+  }
+
+  botaoCadastrar() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(children: [Text("Não tem uma conta. "),
+      TextButton(onPressed: () {
+
+        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>UsuarioPage() ));
+        
+   }, child: Text(" Cadastre-se."))
+      ],
+      ),
     );
     }
 }
