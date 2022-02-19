@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.projeto">
+    package="com.example.dtcc2022">
    <application
-        android:label="projeto"
+        android:label="dtcc2022"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

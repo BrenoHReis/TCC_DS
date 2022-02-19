@@ -1,16 +1,16 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "projeto",
+            "name": "dtcc2022",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "projeto (profile mode)",
+            "name": "dtcc2022 (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"

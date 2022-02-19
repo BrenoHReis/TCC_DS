@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/usuario_form.dart';
+import 'usuario_form.dart';
+
 
 class UsuarioPage extends StatelessWidget {
   const UsuarioPage({Key? key}) : super(key: key);
@@ -8,7 +9,8 @@ class UsuarioPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Registro de Usuário."),
+        title: Text("Novo Usuário"),
+        
       ),
       body: UsuarioForm(),
     );
