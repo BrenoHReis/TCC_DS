@@ -1,67 +1,50 @@
-import 'dart:html';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dtcc2022/usuario_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto/input_field.dart';
-import 'package:projeto/usuario_page.dart';
+
+import 'login_widget.dart';
+import 'main_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  LoginPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool ver = false;
+  UsuarioModel? usuario;
+
+  autenticacao() {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) async {
+      if (user == null) {
+        print('Usuário fez logout!');
+        setState(() {
+          usuario = null;
+        });
+      } else {
+        print('Usuario fez SigIn!');
+        DocumentReference<Map<String, dynamic>> snapshot =
+            FirebaseFirestore.instance.collection('usuarios').doc(user.uid);
+        var fbUser = await snapshot.get();
+        if (fbUser.exists)
+        setState(() {
+          usuario = UsuarioModel(
+              id: user.uid, nome: fbUser['nome'], email: user.email, foto: fbUser['foto']);
+        });
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    autenticacao();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(
-          child: Container(
-            width: 300,
-            padding: const EdgeInsets.all(30.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                _inputField("Email", Icons.email, false),
-                _inputField("Senha", Icons.password, true),
-                SizedBox(
-                  height: 20,
-                ),
-                botaoEntrar(),
-                botaoCadastrar(),
-                    ],
-                  ),
-              
-            ),
-          ),
-        );
+    return usuario == null ? LoginWidget() : MainPage(usuario);
   }
-
-  _inputField(String rotulo, IconData icone, bool senha){
-    return InputField(rotulo, icone, senha);
-  }
-
-  botaoEntrar() {
-   return Row(
-                  children: [
-                    Expanded(child: ElevatedButton(onPressed: () {}, child: Text("Entrar"))),
-                  ],
-                );
-  }
-
-  botaoCadastrar() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(children: [Text("Não tem uma conta. "),
-      TextButton(onPressed: () {
-
-        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>UsuarioPage() ));
-        
-   }, child: Text(" Cadastre-se."))
-      ],
-      ),
-    );
-    }
 }

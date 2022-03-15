@@ -1,16 +1,19 @@
+import 'package:dtcc2022/usuario_model.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto/usuario_form.dart';
+import 'usuario_form.dart';
+
 
 class UsuarioPage extends StatelessWidget {
-  const UsuarioPage({Key? key}) : super(key: key);
+  final UsuarioModel? usuario;
+  const UsuarioPage({this.usuario, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Registro de Usuário."),
+        title: Text("Novo Usuário"),
       ),
-      body: UsuarioForm(),
+      body: UsuarioForm(usuario:usuario),
     );
   }
 }
