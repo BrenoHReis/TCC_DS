@@ -2,7 +2,7 @@
 // ignore_for_file: lines_longer_than_80_chars
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
-     show defaultTargetPlatform, kIsWeb, TargetPlatform;
+    show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -41,19 +41,19 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyC35zFG336zAu7eFpJMGf_WELtHPLPn6eg',
-    appId: '1:805664732115:web:28cd404afaca5b4fff7526',
-    messagingSenderId: '805664732115',
-    projectId: 'tcc2022-ad5b3',
-    authDomain: 'tcc2022-ad5b3.firebaseapp.com',
-    storageBucket: 'tcc2022-ad5b3.appspot.com',
+    apiKey: 'AIzaSyDepGz9RXho5oyLpT08cEqkYidOvfU6m6s',
+    appId: '1:1026872298942:web:b1672774cd66789fd0fdef',
+    messagingSenderId: '1026872298942',
+    projectId: 'quadrasports-1232e',
+    authDomain: 'quadrasports-1232e.firebaseapp.com',
+    storageBucket: 'quadrasports-1232e.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyB_oB7TpErEaS76wKmdOtuZAyLgRnnt1Jg',
-    appId: '1:805664732115:android:b83523f23e7c95fbff7526',
-    messagingSenderId: '805664732115',
-    projectId: 'tcc2022-ad5b3',
-    storageBucket: 'tcc2022-ad5b3.appspot.com',
+    apiKey: 'AIzaSyBvMRj5k9r9uOveFREd9ifn6a56fDITbfQ',
+    appId: '1:1026872298942:android:d427bbaa37492aecd0fdef',
+    messagingSenderId: '1026872298942',
+    projectId: 'quadrasports-1232e',
+    storageBucket: 'quadrasports-1232e.appspot.com',
   );
 }
