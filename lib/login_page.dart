@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dtcc2022/usuario_model.dart';
+import 'package:tcc/usuario_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -25,13 +25,12 @@ class _LoginPageState extends State<LoginPage> {
         });
       } else {
         print('Usuario fez SigIn!');
-        DocumentReference<Map<String, dynamic>> snapshot =
+        var snapshot =
             FirebaseFirestore.instance.collection('usuarios').doc(user.uid);
         var fbUser = await snapshot.get();
-        if (fbUser.exists)
         setState(() {
           usuario = UsuarioModel(
-              id: user.uid, nome: fbUser['nome'], email: user.email, foto: fbUser['foto']);
+              id: user.uid, nome: fbUser['nome'], email: user.email, foto:fbUser['foto']);
         });
       }
     });

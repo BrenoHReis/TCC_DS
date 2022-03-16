@@ -1,6 +1,10 @@
-import 'package:dtcc2022/usuario_model.dart';
-import 'package:dtcc2022/usuario_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'input_field.dart';
+
+import 'usuario_model.dart';
+import 'usuario_page.dart';
 
 class MainPage extends StatelessWidget {
   final UsuarioModel? usuario;

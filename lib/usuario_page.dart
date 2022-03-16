@@ -12,6 +12,10 @@ class UsuarioPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Novo Usuário"),
+<<<<<<< HEAD
+=======
+        
+>>>>>>> 69f35ef5bcb8ec593a04c6c598395dfe811ec231
       ),
       body: UsuarioForm(usuario:usuario),
     );

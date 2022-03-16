@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:dtcc2022/input_field.dart';
-import 'package:dtcc2022/usuario_repository.dart';
+import 'package:tcc/input_field.dart';
+import 'package:tcc/usuario_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -170,15 +170,15 @@ class _UsuarioFormState extends State<UsuarioForm> {
   }
 
   _foto() {
-     if (usuario.foto!=null){
-       if (usuario.foto!.contains("https")){
-         return NetworkImage(usuario.foto!);
-       }else{
-         return MemoryImage(base64Decode(usuario.foto!));
-       }
-       }else {
-         return ExactAssetImage("image/pessoa.jpg");
-     }
+    if (usuario.foto!=null) {
+      if (usuario.foto!.contains("https")) {
+        return NetworkImage(usuario.foto!);
+      } else {
+        return MemoryImage(base64Decode(usuario.foto!));
+      }
+    } else {
+      return ExactAssetImage("image/pessoa.jpg");
+    }
     
   }
 }

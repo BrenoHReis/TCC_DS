@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Projeto",
+            "name": "TCC",
             "request": "launch",
             "type": "dart"
         },
