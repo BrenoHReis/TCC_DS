@@ -20,16 +20,31 @@ class _LoginWidgetState extends State<LoginWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
         child: Container(
           width: 300,
-          padding: const EdgeInsets.all(30.0),
+          padding: const EdgeInsets.all(0.0),
           child: Form(
             key: _key,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                   Row(
+                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                     children: [
+                       Text(
+                  "Login",
+                  style: TextStyle(fontSize: 50, height: 0),
+                ),
+                Container(
+                  width: 60,
+                  height: 100,
+                  child: Image.asset("image/bola3.png"),
+                ),], 
+                   ),
                 InputField(
                   "Email",
                   Icons.email,
@@ -72,13 +87,13 @@ class _LoginWidgetState extends State<LoginWidget> {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Text("Não tem um conta.    ", style: GoogleFonts.dekko()),
+        Text("Não tem um conta ?    "),
         TextButton(
             onPressed: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => UsuarioPage()));
             },
-            child: Text("Cadastre-se"))
+            child: Text("Cadastre-se",style: TextStyle(fontSize: 17),))
       ]),
     );
   }

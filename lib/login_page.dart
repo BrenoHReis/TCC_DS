@@ -27,10 +27,11 @@ class _LoginPageState extends State<LoginPage> {
         print('Usuario fez SigIn!');
         var snapshot =
             FirebaseFirestore.instance.collection('usuarios').doc(user.uid);
-        var fbUser = await snapshot.get();
+        var fbUser = 
+        (await snapshot.get()).data();
         setState(() {
           usuario = UsuarioModel(
-              id: user.uid, nome: fbUser['nome'], email: user.email, foto:fbUser['foto']);
+              id: user.uid, nome: fbUser!['nome'], email: user.email, foto:fbUser!['foto']);
         });
       }
     });

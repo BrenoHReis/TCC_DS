@@ -18,8 +18,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Aplicativo de revisão',
-        theme: ThemeData.dark(),
+        title: 'Quadras Sports',
+        theme: ThemeData(
+          colorScheme: 
+            ColorScheme.dark(primary: Color.fromARGB(255, 18, 160, 16),
+            
+            )
+            ),
         home: LoginPage());
   }
 }

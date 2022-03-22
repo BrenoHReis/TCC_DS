@@ -14,11 +14,11 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("TCC"),
+        title: Text("Quadras Sports"),
       ),
       body: Container(),
       drawer: Drawer(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.black,
         elevation: 5,
         child: Container(
           child: Column(
