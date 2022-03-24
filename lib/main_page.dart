@@ -18,28 +18,22 @@ class MainPage extends StatelessWidget {
       ),
       body: Container(
         child: Padding(
+                child: Image.asset("image/campo.JPG"),
           padding: const EdgeInsets.all(8.0),
-          child: Text("Bem Vindo!!"),
         ),
       ),
       drawer: Drawer(
-        backgroundColor: Color.fromARGB(255, 0, 3, 0),
+        backgroundColor: Color.fromARGB(255, 18, 160, 16),
         elevation: 5,
         child: Container(
-          child: IconButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => UsuarioPage(usuario: usuario)));
-            },
-            icon: Icon(Icons.exit_to_app),)
-            children: Column(
+            child: Column(
               children: [
                 Container(
                   width: double.infinity,
-                  height: 140,
+                  height: 150,
                   child: Card(
                     child: Stack(
-                      alignment: Alignment.center,
+                      alignment: Alignment.bottomCenter,
                       children: [
                         Column(
                           children: [
@@ -59,15 +53,31 @@ class MainPage extends StatelessWidget {
                                       builder: (context) =>
                                           UsuarioPage(usuario: usuario)));
                                 },
-                                icon: Icon(Icons.edit)))
+                                icon: Icon(Icons.edit))),
                       ],
                     ),
                   ),
-                )
+                ),
+                 Center(
+                            child: Container(
+                              alignment:Alignment.bottomRight,
+
+                              child:  IconButton(
+                                onPressed: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                   builder: (context) => UsuarioPage(usuario: usuario)));
+                                },
+                                icon: 
+                                Icon(Icons.exit_to_app),),
+                                ),
+                            )
+                        
               ],
-            ),
+            ),          
           ),
         ),
+        
       );
+      
   }
 }
