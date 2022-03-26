@@ -20,7 +20,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromARGB(255, 0, 29, 0),
       body: Center(
         child: Container(
           width: 300,
@@ -40,6 +40,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   style: TextStyle(fontSize: 50, height: 0),
                 ),
                 Container(
+                  color: Color.fromARGB(255, 18, 160, 16),
                   width: 60,
                   height: 100,
                   child: Image.asset("image/bola3.png"),

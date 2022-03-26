@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import 'foto_widget.dart';
 import 'usuario_model.dart';
 
 class UsuarioForm extends StatefulWidget {
@@ -47,7 +48,7 @@ class _UsuarioFormState extends State<UsuarioForm> {
                 padding: const EdgeInsets.all(8.0),
                 child: CircleAvatar(
                   radius: 80,
-                  backgroundImage: _foto(),
+                  backgroundImage: FotoUsuario().getFoto(usuario),
                 ),
               ),
             ),  
@@ -169,16 +170,5 @@ class _UsuarioFormState extends State<UsuarioForm> {
     }
   }
 
-  _foto() {
-    if (usuario.foto!=null) {
-      if (usuario.foto!.contains("https")) {
-        return NetworkImage(usuario.foto!);
-      } else {
-        return MemoryImage(base64Decode(usuario.foto!));
-      }
-    } else {
-      return ExactAssetImage("image/pessoa.jpg");
-    }
-    
-  }
+  
 }

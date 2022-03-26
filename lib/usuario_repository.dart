@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
 
@@ -25,5 +26,8 @@ class UsuarioRepository {
       await col.doc(usuario.id).update({'foto':url});
     }
 
+  }
+  Future<void> sair() async {
+   await FirebaseAuth.instance.signOut();
   }
 }
