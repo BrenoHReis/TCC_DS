@@ -36,8 +36,7 @@ class MainPage extends StatelessWidget {
       ),
       body: ListView(         
         scrollDirection: Axis.vertical,          
-        children: <Widget>[
-          
+        children: <Widget>[ 
           Container(
             decoration: BoxDecoration(boxShadow: <BoxShadow>[
               BoxShadow(
