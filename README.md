@@ -1,4 +1,4 @@
-# dtcc2022
+# Quadras Sports
 
 A new Flutter project.
 

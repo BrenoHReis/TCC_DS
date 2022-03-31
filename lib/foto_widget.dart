@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:tcc/usuario_model.dart';
+
+import 'models/usuario_model.dart';
+
 
 class FotoUsuario{
   getFoto(UsuarioModel usuario) {
