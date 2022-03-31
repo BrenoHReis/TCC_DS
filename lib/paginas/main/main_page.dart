@@ -1,14 +1,9 @@
-import 'dart:html';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tcc/models/categoria_model.dart';
 import 'package:tcc/paginas/usuario/usuario_page.dart';
 import 'package:tcc/repositorios/usuario_repository.dart';
 
 import '../../foto_widget.dart';
-import '../widgets/input_field.dart';
 import '../../models/usuario_model.dart';
 
 
@@ -45,7 +40,7 @@ class MainPage extends StatelessWidget {
                 offset: Offset(0.0,0.75),
               )
             ]),
-             margin:EdgeInsets.all(10),
+             margin:EdgeInsets.all(5),
             child:Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -54,53 +49,10 @@ class MainPage extends StatelessWidget {
                 Stack(
                   children:<Widget> [
                     Image.asset("image/basquete.png"),
-                    Text("Basquete",style: TextStyle(fontSize: 90, height: 0),),
-                    
-                  ],
-                )
-              ],
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: Color.fromARGB(255, 0, 0, 0),
-                blurRadius: 15.0,
-                offset: Offset(0.0,0.75),
-              )
-            ]),
-             margin:EdgeInsets.all(10),
-           child:Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Stack(
-                  children:<Widget> [
-                    Image.asset("image/society.png"),
-                    Text("Futebol Society",style: TextStyle(fontSize: 90, height: 0),),
-                  ],
-                )
-              ],
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(boxShadow: <BoxShadow>[
-              BoxShadow(
-                color: Colors.grey,
-                blurRadius: 50.0,
-                offset: Offset(0.0,0.75),
-              )
-            ]),
-            margin:EdgeInsets.all(10), 
-            child:Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Stack(
-                  children:<Widget> [
-                    
-                    Image.asset("image/voleidepraia.png"),
-                    Text("Vôlei de Praia",style: TextStyle(fontSize: 90, height: 0),),
+                    Positioned(
+                      top: 35,
+                      left: 25,
+                      child: Text("Basquete",style: TextStyle(fontSize: 30, height: 0, shadows: kElevationToShadow[3],),)),
                     
                   ],
                 )
