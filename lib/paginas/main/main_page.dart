@@ -64,7 +64,7 @@ class MainPage extends StatelessWidget {
           Container(
             decoration: BoxDecoration(boxShadow: <BoxShadow>[
               BoxShadow(
-                color: Colors.grey,
+                color: Color.fromARGB(255, 0, 0, 0),
                 blurRadius: 15.0,
                 offset: Offset(0.0,0.75),
               )
