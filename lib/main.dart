@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         title: 'Quadras Sports',
         theme: ThemeData(
           colorScheme: 
-            ColorScheme.dark(primary: Color.fromARGB(255, 18, 160, 16),
+            ColorScheme.dark(primary: Color.fromARGB(255, 141, 141, 141),
             
             )
             ),

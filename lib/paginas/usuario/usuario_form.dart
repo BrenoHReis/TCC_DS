@@ -39,9 +39,6 @@ class _UsuarioFormState extends State<UsuarioForm> {
         key: _key,
         child: Column(
           children: [
-          
-          
-
             GestureDetector(
               onTap: _tirarFoto,
               child: Padding(

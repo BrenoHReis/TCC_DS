@@ -1,5 +1,8 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:tcc/models/categoria_model.dart';
+import 'package:tcc/paginas/main/quadra.page.dart';
 import 'package:tcc/paginas/usuario/usuario_page.dart';
 import 'package:tcc/repositorios/usuario_repository.dart';
 
@@ -42,21 +45,21 @@ class MainPage extends StatelessWidget {
             ]),
              margin:EdgeInsets.all(5),
             child:Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                
-                Stack(
-                  children:<Widget> [
-                    Image.asset("image/basquete.png"),
-                    Positioned(
-                      top: 35,
-                      left: 25,
-                      child: Text("Basquete",style: TextStyle(fontSize: 30, height: 0, shadows: kElevationToShadow[3],),)),
-                    
-                  ],
-                )
-              ],
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: CategoriaModel.categoria.map((e) =>
+              GestureDetector(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => QuadraPage(e),)),
+                child: Stack(
+                    children:<Widget> [
+                      Image.asset(e.image),
+                      Positioned(
+                        top: 25,
+                        left: 15,
+                        child:Text(e.nome,style: TextStyle(fontSize: 30, height: 0, shadows: kElevationToShadow[3],),)),
+                    ],
+                  ),
+              )).toList(),
             ),
           ),
         ],
@@ -103,7 +106,9 @@ class MainPage extends StatelessWidget {
                   child: Column( 
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: CategoriaModel.categoria.map((e) => ElevatedButton(
-                            style: style,
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.grey,
+                            ),
                             onPressed: () {},
                             child: ListTile(title: Text(e.nome),leading: Icon(e.icone),),
                           )).toList(),
