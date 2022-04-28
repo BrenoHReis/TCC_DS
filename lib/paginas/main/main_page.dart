@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:tcc/models/categoria_model.dart';
 import 'package:tcc/paginas/main/quadra.page.dart';
@@ -9,62 +7,78 @@ import 'package:tcc/repositorios/usuario_repository.dart';
 import '../../foto_widget.dart';
 import '../../models/usuario_model.dart';
 
-
-
 class MainPage extends StatelessWidget {
   final UsuarioModel? usuario;
   const MainPage(this.usuario, {Key? key}) : super(key: key);
 
   get style => null;
 
-
-
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
         title: Text("Quadras Sport"),
-        actions: [IconButton(
-          onPressed: () {
-            
-             
-          },
-           icon: Icon(Icons.search),)],
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search),
+          )
+        ],
       ),
-      body: ListView(         
-        scrollDirection: Axis.vertical,          
-        children: <Widget>[ 
+      body: ListView(
+        scrollDirection: Axis.vertical,
+        children: <Widget>[
           Container(
             decoration: BoxDecoration(boxShadow: <BoxShadow>[
               BoxShadow(
-                color: Color.fromARGB(255, 0, 0, 0),
+                color: Color.fromARGB(255, 39, 38, 38),
                 blurRadius: 15.0,
-                offset: Offset(0.0,0.75),
+                offset: Offset(0.0, 0.75),
               )
             ]),
-             margin:EdgeInsets.all(5),
-            child:Column(
+            margin: EdgeInsets.all(50),
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: CategoriaModel.categoria.map((e) =>
-              GestureDetector(
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => QuadraPage(e),)),
-                child: Stack(
-                    children:<Widget> [
-                      Image.asset(e.image),
-                      Positioned(
-                        top: 25,
-                        left: 15,
-                        child:Text(e.nome,style: TextStyle(fontSize: 30, height: 0, shadows: kElevationToShadow[3],),)),
-                    ],
-                  ),
-              )).toList(),
+              children: CategoriaModel.categoria
+                  .map((e) => GestureDetector(
+                        onTap: () =>
+                            Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => QuadraPage(e),
+                        )),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 250,
+                              height: 250,
+                              child: Expanded(
+                                child: Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Image.asset(e.image),
+                                ),
+                              ),
+                            ),
+                            Container(
+                                child: Expanded(
+                              child: Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  e.nome,
+                                  style: TextStyle(
+                                    fontSize: 30,
+                                    shadows: kElevationToShadow[3],
+                                  ),
+                                ),
+                              ),
+                            )),
+                          ],
+                        ),
+                      ))
+                  .toList(),
             ),
           ),
         ],
       ),
-      
       drawer: Drawer(
         backgroundColor: Colors.grey,
         elevation: 5,
@@ -103,16 +117,20 @@ class MainPage extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: Column( 
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: CategoriaModel.categoria.map((e) => ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.grey,
-                            ),
-                            onPressed: () {},
-                            child: ListTile(title: Text(e.nome),leading: Icon(e.icone),),
-                          )).toList(),
-                    
+                    children: CategoriaModel.categoria
+                        .map((e) => ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.grey,
+                              ),
+                              onPressed: () {},
+                              child: ListTile(
+                                title: Text(e.nome),
+                                leading: Icon(e.icone),
+                              ),
+                            ))
+                        .toList(),
                   ),
                 ),
                 Row(
@@ -126,17 +144,9 @@ class MainPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                
               ]),
-              
         ),
-        
-              
       ),
-    
-     
     );
   }
 }
-
-
