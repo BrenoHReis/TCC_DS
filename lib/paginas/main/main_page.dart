@@ -18,12 +18,6 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Quadras Sport"),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.search),
-          )
-        ],
       ),
       body: ListView(
         scrollDirection: Axis.vertical,
@@ -37,46 +31,32 @@ class MainPage extends StatelessWidget {
               )
             ]),
             margin: EdgeInsets.all(50),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: CategoriaModel.categoria
-                  .map((e) => GestureDetector(
-                        onTap: () =>
-                            Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => QuadraPage(e),
-                        )),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 250,
-                              height: 250,
-                              child: Expanded(
-                                child: Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Image.asset(e.image),
-                                ),
-                              ),
-                            ),
-                            Container(
-                                child: Expanded(
-                              child: Align(
-                                alignment: Alignment.topLeft,
-                                child: Text(
-                                  e.nome,
-                                  style: TextStyle(
-                                    fontSize: 30,
-                                    shadows: kElevationToShadow[3],
-                                  ),
-                                ),
-                              ),
-                            )),
-                          ],
-                        ),
-                      ))
-                  .toList(),
+            
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: 400,
+                  height: 250,
+                  color:Colors.white,
+                ),
+                 Container(
+                  width: 400,
+                  height: 250,
+                  color:Colors.white,
+                ),
+                   Container(
+                  width: 400,
+                  height: 250,
+                  color:Colors.white,
+                  ),
+                  
+                  
+              ],
             ),
-          ),
+            ),
+          
         ],
       ),
       drawer: Drawer(
