@@ -11,8 +11,8 @@ import '../quadra_page/quadra_page.dart';
 
 class MainPage extends StatelessWidget {
   final UsuarioModel? usuario;
-  final QuadraModel? quadra;
-  const MainPage(this.usuario,this.quadra,{Key? key}) : super(key: key);
+
+  const MainPage(this.usuario, {Key? key}) : super(key: key);
 
   get style => null;
 
@@ -21,12 +21,6 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Quadras Sport"),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.search),
-          )
-        ],
       ),
       body: ListView(
         scrollDirection: Axis.vertical,
@@ -45,9 +39,7 @@ class MainPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: CategoriaModel.categoria
                   .map((e) => GestureDetector(
-                        onTap: () {
-
-                        },
+                        onTap: () {},
                         child: Row(
                           children: [
                             Container(
@@ -68,12 +60,10 @@ class MainPage extends StatelessWidget {
                                   e.nome,
                                   style: TextStyle(
                                     fontSize: 25,
-                                    
                                   ),
                                 ),
                               ),
-                            )
-                            ),
+                            )),
                           ],
                         ),
                       ))
@@ -121,15 +111,14 @@ class MainPage extends StatelessWidget {
                 ),
                 Expanded(
                   child: ListTile(
-                    onTap: (){
+                    onTap: () {
+                      var quadra = QuadraModel();
                       Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>
-                        QuadraPage(quadra: quadra)));
-                        },
-
-                    leading: Icon( Icons.add),
+                          builder: (context) => QuadraPage(quadra)));
+                    },
+                    leading: Icon(Icons.add),
                     title: Text("Nova quadra"),
-                    ),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,

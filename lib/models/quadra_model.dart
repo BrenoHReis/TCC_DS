@@ -1,5 +1,4 @@
-class QuadraModel{
-
+class QuadraModel {
   String? id;
   String? nome;
   String? descricao;
@@ -10,6 +9,18 @@ class QuadraModel{
   String? imagem;
   String? telefone;
 
+  QuadraModel(
+      {this.id,
+      this.nome,
+      this.descricao,
+      this.endereco,
+      this.bairro,
+      this.cidade,
+      this.numero,
+      this.imagem,
+      this.telefone});
 
-  QuadraModel({this.id, this.nome, this.descricao, this.endereco, this.bairro, this.cidade, this.numero, this.imagem, this.telefone});
+  Map<String, dynamic> toJson() {
+    return {"nome": nome, "endereço": endereco};
+  }
 }

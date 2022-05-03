@@ -7,7 +7,6 @@ import '../main/main_page.dart';
 import '../../models/usuario_model.dart';
 import 'login_widget.dart';
 
-
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
 
@@ -29,11 +28,13 @@ class _LoginPageState extends State<LoginPage> {
         print('Usuario fez SigIn!');
         var snapshot =
             FirebaseFirestore.instance.collection('usuarios').doc(user.uid);
-        var fbUser = 
-        (await snapshot.get()).data();
+        var fbUser = (await snapshot.get()).data();
         setState(() {
           usuario = UsuarioModel(
-              id: user.uid, nome: fbUser!['nome'], email: user.email, foto:fbUser['foto']??"");
+              id: user.uid,
+              nome: fbUser!['nome'],
+              email: user.email,
+              foto: fbUser['foto'] ?? "");
         });
       }
     });

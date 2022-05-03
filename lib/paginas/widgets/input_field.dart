@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class InputField extends StatefulWidget {
   final String rotulo;
   final IconData icone;
@@ -7,9 +8,14 @@ class InputField extends StatefulWidget {
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
   final void Function(String?)? onsaved;
-  
-  
-  const InputField(this.rotulo, this.icone, this.senha,{Key? key,this.initialValue,this.keyboardType, this.validator, this.onsaved }) : super(key: key);
+
+  const InputField(this.rotulo, this.icone, this.senha,
+      {Key? key,
+      this.initialValue,
+      this.keyboardType,
+      this.validator,
+      this.onsaved})
+      : super(key: key);
 
   @override
   _InputFieldState createState() => _InputFieldState();
@@ -17,8 +23,6 @@ class InputField extends StatefulWidget {
 
 class _InputFieldState extends State<InputField> {
   bool ver = false;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +45,8 @@ class _InputFieldState extends State<InputField> {
                     },
                     icon: Icon(ver ? Icons.visibility_off : Icons.visibility))
                 : null),
-
-
-      validator: widget.validator,      
-      onSaved: widget.onsaved,
-
+        validator: widget.validator,
+        onSaved: widget.onsaved,
       ),
     );
   }

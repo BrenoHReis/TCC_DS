@@ -3,15 +3,16 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:tcc/paginas/widgets/input_field.dart';
 
 import '../../models/quadra_model.dart';
+import '../../repositorios/quadra_repository.dart';
 
 class QuadraForm extends StatefulWidget {
-  final QuadraModel? quadra;
-  const QuadraForm({this.quadra,Key? key}) : super(key: key);
+  final QuadraModel quadra;
+  const QuadraForm(this.quadra, {Key? key}) : super(key: key);
 
   @override
   State<QuadraForm> createState() => _QuadraFormState();
@@ -21,13 +22,6 @@ class _QuadraFormState extends State<QuadraForm> {
   GlobalKey<FormState> _key = GlobalKey<FormState>();
   QuadraModel quadra = QuadraModel();
 
-  @override
-  void initState(){
-    super.initState();
-    if(widget.quadra != null){
-      quadra = widget.quadra!;
-    }
-  }
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -42,12 +36,12 @@ class _QuadraFormState extends State<QuadraForm> {
                 Icons.autofps_select_sharp,
                 false,
                 initialValue: quadra.nome,
-                validator:(value){
-                  if (value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Campo não pode ficar vazio";
                   }
                 },
-                onsaved: (value){
+                onsaved: (value) {
                   quadra.nome = value;
                 },
               ),
@@ -56,12 +50,12 @@ class _QuadraFormState extends State<QuadraForm> {
                 Icons.description_outlined,
                 false,
                 initialValue: quadra.descricao,
-                validator:(value){
-                  if(value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Campo não pode ficar vazio";
                   }
                 },
-                onsaved: (value){
+                onsaved: (value) {
                   quadra.descricao = value;
                 },
               ),
@@ -70,12 +64,12 @@ class _QuadraFormState extends State<QuadraForm> {
                 Icons.description_outlined,
                 false,
                 initialValue: quadra.endereco,
-                validator:(value){
-                  if(value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Campo não pode ficar vazio";
                   }
                 },
-                onsaved: (value){
+                onsaved: (value) {
                   quadra.endereco = value;
                 },
               ),
@@ -84,12 +78,12 @@ class _QuadraFormState extends State<QuadraForm> {
                 Icons.description_outlined,
                 false,
                 initialValue: quadra.bairro,
-                validator:(value){
-                  if(value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Campo não pode ficar vazio";
                   }
                 },
-                onsaved: (value){
+                onsaved: (value) {
                   quadra.bairro = value;
                 },
               ),
@@ -99,13 +93,13 @@ class _QuadraFormState extends State<QuadraForm> {
                 false,
                 initialValue: "${quadra.numero}",
                 keyboardType: TextInputType.number,
-                validator:(value){
-                  if(value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Campo não pode ficar vazio";
                   }
                 },
-                onsaved: (value){
-                  quadra.numero = value;
+                onsaved: (value) {
+                  quadra.numero = int.tryParse(value ?? "0");
                 },
               ),
               InputField(
@@ -113,42 +107,77 @@ class _QuadraFormState extends State<QuadraForm> {
                 Icons.description_outlined,
                 false,
                 initialValue: quadra.cidade,
-                validator:(value){
-                  if(value!.isEmpty){
+                validator: (value) {
+                  if (value!.isEmpty) {
                     return "Campo não pode ficar vazio";
                   }
                 },
-                onsaved: (value){
+                onsaved: (value) {
                   quadra.cidade = value;
                 },
               ),
-              RaisedButton(onPressed: (){
-                _imagemQuadra();
-              },
-              child: Text("Selecionar Imagem"),
+              RaisedButton(
+                color: Colors.grey,
+                onPressed: () {
+                  _imagemQuadra();
+                },
+                child: Text("Selecionar Imagem"),
               ),
-              
+              InputField(
+                "Telefone",
+                Icons.description_outlined,
+                false,
+                initialValue: quadra.telefone,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Campo não pode ficar vazio";
+                  }
+                },
+                onsaved: (value) {
+                  quadra.telefone = value;
+                },
+              ),
+              Row(children: [
+                Expanded(
+                    child: ElevatedButton.icon(
+                        onPressed: () async {
+                          if (_key.currentState!.validate()) {
+                            _key.currentState!.save();
+                            try {
+                              await salvar(quadra);
+                            } catch (e) {
+                              print(e);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text("Falha ao Salvar!")));
+                            }
+                          }
+                        },
+                        icon: Icon(Icons.save),
+                        label: Text("Salvar")))
+              ])
             ],
           ),
         ),
-        ),
+      ),
     );
-    
   }
-  Future<void> _imagemQuadra() async{
+
+  salvar(QuadraModel quadra) async {
+    await QuadraRepository().salvar(quadra);
+  }
+
+  Future<void> _imagemQuadra() async {
     final ImagePicker _picker = ImagePicker();
-    try{
+    try {
       final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
 
-      photo!.readAsBytes().then((imagem){
-        
+      photo!.readAsBytes().then((imagem) {
         setState(() {
           quadra.imagem = base64Encode(imagem);
         });
-
       });
-      }catch (e){
-        print("Erro, Selecionando a foto da quadra: $e");
-      }
+    } catch (e) {
+      print("Erro, Selecionando a foto da quadra: $e");
     }
   }
+}
