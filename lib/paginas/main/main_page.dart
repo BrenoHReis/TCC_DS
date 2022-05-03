@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:tcc/models/categoria_model.dart';
-import 'package:tcc/paginas/main/quadra.page.dart';
 import 'package:tcc/paginas/usuario/usuario_page.dart';
 import 'package:tcc/repositorios/usuario_repository.dart';
 
 import '../../foto_widget.dart';
+import '../../models/quadra_model.dart';
 import '../../models/usuario_model.dart';
+
+import '../quadra_page/quadra_page.dart';
 
 class MainPage extends StatelessWidget {
   final UsuarioModel? usuario;
-  const MainPage(this.usuario, {Key? key}) : super(key: key);
+  final QuadraModel? quadra;
+  const MainPage(this.usuario,this.quadra,{Key? key}) : super(key: key);
 
   get style => null;
 
@@ -42,10 +45,9 @@ class MainPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: CategoriaModel.categoria
                   .map((e) => GestureDetector(
-                        onTap: () =>
-                            Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => QuadraPage(e),
-                        )),
+                        onTap: () {
+
+                        },
                         child: Row(
                           children: [
                             Container(
@@ -65,12 +67,13 @@ class MainPage extends StatelessWidget {
                                 child: Text(
                                   e.nome,
                                   style: TextStyle(
-                                    fontSize: 30,
-                                    shadows: kElevationToShadow[3],
+                                    fontSize: 25,
+                                    
                                   ),
                                 ),
                               ),
-                            )),
+                            )
+                            ),
                           ],
                         ),
                       ))
@@ -117,21 +120,16 @@ class MainPage extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: CategoriaModel.categoria
-                        .map((e) => ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.grey,
-                              ),
-                              onPressed: () {},
-                              child: ListTile(
-                                title: Text(e.nome),
-                                leading: Icon(e.icone),
-                              ),
-                            ))
-                        .toList(),
-                  ),
+                  child: ListTile(
+                    onTap: (){
+                      Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) =>
+                        QuadraPage(quadra: quadra)));
+                        },
+
+                    leading: Icon( Icons.add),
+                    title: Text("Nova quadra"),
+                    ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
