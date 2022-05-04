@@ -21,6 +21,15 @@ class QuadraModel {
       this.telefone});
 
   Map<String, dynamic> toJson() {
-    return {"nome": nome, "endereço": endereco};
+    return {
+      "nome": nome,
+      "Descrição": descricao,
+      "endereço": endereco,
+      "Bairro": bairro,
+      "número": numero,
+      "cidade": cidade,
+      "imagem": imagem,
+      "telefone": telefone
+    };
   }
 }
