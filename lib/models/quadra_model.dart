@@ -7,7 +7,10 @@ class QuadraModel {
   int? numero;
   String? cidade;
   String? imagem;
-  String? telefone;
+  int? telefone;
+  String? categoria;
+  String? horaAberto;
+  String? horaFecha;
 
   QuadraModel(
       {this.id,
@@ -18,7 +21,10 @@ class QuadraModel {
       this.cidade,
       this.numero,
       this.imagem,
-      this.telefone});
+      this.telefone,
+      this.categoria,
+      this.horaAberto,
+      this.horaFecha});
 
   Map<String, dynamic> toJson() {
     return {
@@ -29,7 +35,10 @@ class QuadraModel {
       "número": numero,
       "cidade": cidade,
       "imagem": imagem,
-      "telefone": telefone
+      "telefone": telefone,
+      "categoria": categoria,
+      "Hora que abre": horaAberto,
+      "Hora que fecha": horaFecha
     };
   }
 }

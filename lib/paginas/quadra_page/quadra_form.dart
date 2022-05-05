@@ -60,6 +60,20 @@ class _QuadraFormState extends State<QuadraForm> {
                 },
               ),
               InputField(
+                "Categoria",
+                Icons.description_outlined,
+                false,
+                initialValue: quadra.categoria,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Campo não pode ficar vazio";
+                  }
+                },
+                onsaved: (value) {
+                  quadra.categoria = value;
+                },
+              ),
+              InputField(
                 "Endereço",
                 Icons.description_outlined,
                 false,
@@ -127,14 +141,43 @@ class _QuadraFormState extends State<QuadraForm> {
                 "Telefone",
                 Icons.description_outlined,
                 false,
-                initialValue: quadra.telefone,
+                initialValue: "${quadra.telefone}",
+                keyboardType: TextInputType.number,
                 validator: (value) {
                   if (value!.isEmpty) {
                     return "Campo não pode ficar vazio";
                   }
                 },
                 onsaved: (value) {
-                  quadra.telefone = value;
+                  quadra.telefone = int.tryParse(value ?? "0");
+                },
+              ),
+               InputField(
+                "Hora do funcionamento ",
+                Icons.description_outlined,
+                false,
+                initialValue: quadra.horaAberto,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Campo não pode ficar vazio";
+                  }
+                },
+                onsaved: (value) {
+                  quadra.horaAberto = value;
+                },
+              ),
+               InputField(
+                "Hora do fechamento ",
+                Icons.description_outlined,
+                false,
+                initialValue: quadra.horaFecha,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Campo não pode ficar vazio";
+                  }
+                },
+                onsaved: (value) {
+                  quadra.horaFecha = value;
                 },
               ),
               Row(children: [

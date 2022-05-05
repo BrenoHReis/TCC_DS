@@ -7,6 +7,7 @@ import '../../foto_widget.dart';
 import '../../models/quadra_model.dart';
 import '../../models/usuario_model.dart';
 
+import '../calendario/calendario.dart';
 import '../quadra_page/quadra_page.dart';
 
 class MainPage extends StatelessWidget {
@@ -39,7 +40,11 @@ class MainPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: CategoriaModel.categoria
                   .map((e) => GestureDetector(
-                        onTap: () {},
+                        onTap: () =>
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder:(context) =>Calendario()
+                          
+                          )),
                         child: Row(
                           children: [
                             Container(
