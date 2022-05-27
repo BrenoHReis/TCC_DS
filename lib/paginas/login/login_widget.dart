@@ -1,13 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:tcc/paginas/usuario/usuario_page.dart';
 
 import '../widgets/input_field.dart';
 import '../../models/usuario_model.dart';
-
-
-
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -34,20 +30,21 @@ class _LoginWidgetState extends State<LoginWidget> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                   Row(
-                     mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                     children: [
-                       Text(
-                  "Login",
-                  style: TextStyle(fontSize: 50, height: 0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Login",
+                      style: TextStyle(fontSize: 50, height: 0),
+                    ),
+                    Container(
+                      width: 60,
+                      height: 100,
+                      child: Image.asset("image/bola.png"),
+                    ),
+                  ],
                 ),
-                Container(
-                  width: 60,
-                  height: 100,
-                  child: Image.asset("image/bola.png"),
-                ),], 
-                   ),
                 InputField(
                   "Email",
                   Icons.email,
@@ -96,7 +93,10 @@ class _LoginWidgetState extends State<LoginWidget> {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => UsuarioPage()));
             },
-            child: Text("Cadastre-se",style: TextStyle(fontSize: 17),))
+            child: Text(
+              "Cadastre-se",
+              style: TextStyle(fontSize: 17),
+            ))
       ]),
     );
   }
@@ -110,9 +110,11 @@ class _LoginWidgetState extends State<LoginWidget> {
               email: usuario.email!, password: usuario.senha!);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Email desconhecido!")));
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Email desconhecido!")));
       } else if (e.code == 'wrong-password') {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Senha incorreta!")));
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Senha incorreta!")));
       }
     }
   }
