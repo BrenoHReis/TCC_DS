@@ -10,7 +10,7 @@ class Calendario extends StatefulWidget {
 
 class _CalendarioState extends State<Calendario> {
   DateTime _date = DateTime.now();
-  bool _flag = true;
+  bool _cor = true;
 
   Future<Null> _selectDate(BuildContext context) async {
     DateTime? _datePicker = await showDatePicker(
@@ -56,10 +56,10 @@ class _CalendarioState extends State<Calendario> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => setState(() =>_flag =!_flag),
-              child: Text(_flag ? '09:00':'09:00'),
+              onPressed: () => setState(() =>_cor =!_cor),
+              child: Text(_cor ? '09:00':'09:00'),
               style: ElevatedButton.styleFrom(
-                primary: _flag ? Colors.green : Colors.red,
+                primary: _cor ? Colors.green : Colors.red,
               ),
               
             ),
