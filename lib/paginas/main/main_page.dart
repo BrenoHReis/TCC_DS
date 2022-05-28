@@ -40,11 +40,9 @@ class MainPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: CategoriaModel.categoria
                   .map((e) => GestureDetector(
-                        onTap: () =>
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder:(context) =>Calendario()
-                          
-                          )),
+                        onTap: () => Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => Calendario())),
                         child: Row(
                           children: [
                             Container(

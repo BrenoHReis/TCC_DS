@@ -1,5 +1,3 @@
-// ignore_for_file: deprecated_member_use
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -21,6 +19,7 @@ class QuadraForm extends StatefulWidget {
 class _QuadraFormState extends State<QuadraForm> {
   GlobalKey<FormState> _key = GlobalKey<FormState>();
   QuadraModel quadra = QuadraModel();
+
 
   @override
   Widget build(BuildContext context) {

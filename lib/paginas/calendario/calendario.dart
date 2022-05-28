@@ -10,8 +10,7 @@ class Calendario extends StatefulWidget {
 
 class _CalendarioState extends State<Calendario> {
   DateTime _date = DateTime.now();
-
-  var dataformato;
+  bool _flag = true;
 
   Future<Null> _selectDate(BuildContext context) async {
     DateTime? _datePicker = await showDatePicker(
@@ -30,17 +29,18 @@ class _CalendarioState extends State<Calendario> {
 
   @override
   Widget build(BuildContext context) {
+    var dataformato = DateFormat('dd/MM/yyyy').format(_date);
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          dataformato = DateFormat('dd/MM/yyyy').format(_date),
+          dataformato // = DateFormat('dd/MM/yyyy').format(_date),
         ),
         actions: [
           GestureDetector(
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Icon(
-                  Icons.calendar_month,
+                  Icons.calendar_today_sharp,
                   size: 35,
                 ),
               ),
@@ -56,13 +56,12 @@ class _CalendarioState extends State<Calendario> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
+              onPressed: () => setState(() =>_flag =!_flag),
+              child: Text(_flag ? '09:00':'09:00'),
               style: ElevatedButton.styleFrom(
-                primary: Colors.green,
-                onSurface: Colors.grey,
-                elevation: 10,
+                primary: _flag ? Colors.green : Colors.red,
               ),
-              child: Text('09:00'),
-              onPressed: () {},
+              
             ),
             SizedBox(
               width: 20,
@@ -74,7 +73,8 @@ class _CalendarioState extends State<Calendario> {
                 elevation: 10,
               ),
               child: Text('10:00'),
-              onPressed: () {},
+              onPressed: () {
+              },
             ),
             SizedBox(
               width: 20,
